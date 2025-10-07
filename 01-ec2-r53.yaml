@@ -20,7 +20,6 @@
       tags:
         Name: "{{item}}"
       register: ec2_output  
-
     loop: "{{instances}}"
 
   - name: Print the EC2 output
