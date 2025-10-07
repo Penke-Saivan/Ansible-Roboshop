@@ -9,6 +9,9 @@
     domain_name: "believeinyou.fun"
     instances:
     - mongodb
+    - redis
+    - mysql
+    - rabbitmq
 
   tasks:
   - name: Create EC2 instances
@@ -26,15 +29,15 @@
     ansible.builtin.debug:
       msg: "{{ec2_output}}" 
 
-  - name: Print Public-IP Addrss
-    ansible.builtin.debug:
-      msg: "{{item.instances[0].public_ip_address}}" 
-    loop: "{{ec2_output.results}}"  
+  # - name: Print Public-IP Addrss
+  #   ansible.builtin.debug:
+  #     msg: "{{item.instances[0].public_ip_address}}" 
+  #   loop: "{{ec2_output.results}}"  
 
-  - name: Print Private-IP Addrss
-    ansible.builtin.debug:
-      msg: "{{item.instances[0].private_ip_address}}" 
-    loop: "{{ec2_output.results}}" 
+  # - name: Print Private-IP Addrss
+  #   ansible.builtin.debug:
+  #     msg: "{{item.instances[0].private_ip_address}}" 
+  #   loop: "{{ec2_output.results}}" 
 
   - name: Create R53 
     amazon.aws.route53:
