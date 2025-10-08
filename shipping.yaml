@@ -67,10 +67,11 @@
     - name: check if the data is already loaded
       ansible.builtin.command: mysql -h mysql.believeinyou.fun -uroot -pRoboShop@1 -e 'use cities'
       register: city_output
+      ignore_errors: true
 
     - name: Display city_output
       ansible.builtin.debug:
-        msg: "{{city_output}}"  
+        msg: "{{city_output}} and {{city_output.rc}}"  
 
     #-Import of sql script
     # Name:all“Import all databases from the provided dump file.”
@@ -88,6 +89,7 @@
         - /app/db/schema.sql
         - /app/db/app-user.sql
         - /app/db/master-data.sql
+      when : city_output.rc == 1
 
         
     - name: daemon reload enable and start
