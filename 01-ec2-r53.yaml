@@ -7,11 +7,11 @@
     sg_id: sg-0adfe78ec6189cd05
     zone_id: Z03460353RS4GS5RQB39D
     domain_name: "believeinyou.fun"
-    instances:
-    - mongodb
-    - redis
-    - mysql
-    - rabbitmq
+    # instances:
+    # - mongodb
+    # - redis
+    # - mysql
+    # - rabbitmq
 
   tasks:
   - name: Create EC2 instances
