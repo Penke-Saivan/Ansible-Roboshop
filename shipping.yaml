@@ -59,14 +59,18 @@
         src: shipping.service
         dest: /etc/systemd/system/shipping.service
 
-    # - name: install mysql client
-    #   ansible.builtin.dnf:
-    #     name: mysql
-    #     state: present
+    - name: install mysql client
+      ansible.builtin.dnf:
+        name: mysql
+        state: present
 
-    # - name: check if the data is already loaded
-    #   ansible.builltin.command: mysql -h mysql.believeinyou.fun -uroot -pRoboShop@1 -e 'use cities'
-    #   register: city_output
+    - name: check if the data is already loaded
+      ansible.builltin.command: mysql -h mysql.believeinyou.fun -uroot -pRoboShop@1 -e 'use cities'
+      register: city_output
+
+    - name: Display city_output
+      ansible.builltin.debug:
+        msg: "{{city_output}}"  
 
     #-Import of sql script
     # Name:all“Import all databases from the provided dump file.”
