@@ -47,9 +47,7 @@
     - name: Extract catalogue to application /app
       ansible.builtin.unarchive:
         src: /tmp/catalogue.zip
-
         dest: /app
-
         remote_src: yes
 
     - name: download the dependencies.
