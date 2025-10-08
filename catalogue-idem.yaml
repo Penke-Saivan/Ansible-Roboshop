@@ -76,7 +76,7 @@
       register: catalogue_output
 
     - name: Display catalogue_output  
-      ansible.builltin.debug:
+      ansible.builtin.debug:
         msg:"{{catalogue_output}}"  
 
     - name: Load Master Data of the List of products we want to sell and their quantity information also there in the same master data.
