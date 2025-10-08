@@ -50,12 +50,12 @@
         chdir: /app
 
     - name: move jar file
-      ansible.builltin.command: mv target/shipping-1.0.jar shipping.jar
+      ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
       args:
         chdir: /app
 
     - name: copy shipping service to remote sever - shipping (/etc/systemd/system/shipping.service)
-      ansible.builltin.copy:
+      ansible.builtin.copy:
         src: shipping.service
         dest: /etc/systemd/system/shipping.service
 
@@ -65,11 +65,11 @@
         state: present
 
     - name: check if the data is already loaded
-      ansible.builltin.command: mysql -h mysql.believeinyou.fun -uroot -pRoboShop@1 -e 'use cities'
+      ansible.builtin.command: mysql -h mysql.believeinyou.fun -uroot -pRoboShop@1 -e 'use cities'
       register: city_output
 
     - name: Display city_output
-      ansible.builltin.debug:
+      ansible.builtin.debug:
         msg: "{{city_output}}"  
 
     #-Import of sql script
